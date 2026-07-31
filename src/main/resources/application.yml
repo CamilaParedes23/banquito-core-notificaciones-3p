@@ -1,66 +1,66 @@
 server:
-  port: ${SERVER_PORT:8087}
+  port: ${SERVER_PORT}
 
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:notification-service}
+    name: ${SPRING_APPLICATION_NAME}
   datasource:
-    url: ${NOTIFICATION_DB_URL:${DB_URL:jdbc:mysql://localhost:33066/banquito_notification_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil}}
-    username: ${NOTIFICATION_DB_USERNAME:${DB_USERNAME:root}}
-    password: ${NOTIFICATION_DB_PASSWORD:${DB_PASSWORD:BanQuitoRoot2026!}}
+    url: ${NOTIFICATION_DB_URL}
+    username: ${NOTIFICATION_DB_USERNAME}
+    password: ${NOTIFICATION_DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: ${JPA_DDL_AUTO}
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
     properties:
       hibernate:
-        format_sql: ${HIBERNATE_FORMAT_SQL:true}
+        format_sql: ${HIBERNATE_FORMAT_SQL}
   flyway:
-    enabled: ${FLYWAY_ENABLED:true}
-    baseline-on-migrate: true
+    enabled: ${FLYWAY_ENABLED}
+    baseline-on-migrate: ${FLYWAY_BASELINE_ON_MIGRATE}
     locations: classpath:db/migration
   mail:
-    host: ${SMTP_HOST:localhost}
-    port: ${SMTP_PORT:1025}
-    username: ${SMTP_USERNAME:}
-    password: ${SMTP_PASSWORD:}
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
     properties:
       mail:
         smtp:
-          auth: ${SMTP_AUTH:false}
+          auth: ${SMTP_AUTH}
           starttls:
-            enable: ${SMTP_STARTTLS_ENABLE:false}
-          connectiontimeout: ${SMTP_CONNECTION_TIMEOUT:5000}
-          timeout: ${SMTP_TIMEOUT:5000}
-          writetimeout: ${SMTP_WRITE_TIMEOUT:5000}
+            enable: ${SMTP_STARTTLS_ENABLE}
+          connectiontimeout: ${SMTP_CONNECTION_TIMEOUT}
+          timeout: ${SMTP_TIMEOUT}
+          writetimeout: ${SMTP_WRITE_TIMEOUT}
 
 management:
   endpoints:
     web:
       exposure:
-        include: health,info
+        include: ${ACTUATOR_EXPOSURE}
 
 springdoc:
   api-docs:
-    path: /api-docs
+    path: ${OPENAPI_DOCS_PATH}
   swagger-ui:
-    path: /swagger-ui.html
+    path: ${SWAGGER_UI_PATH}
 
 banquito:
   internal:
-    service-key: ${INTERNAL_SERVICE_KEY:BanQuitoInternalServiceKey2026ChangeMe}
+    service-key: ${INTERNAL_SERVICE_KEY}
   security:
     jwt:
-      issuer: ${JWT_ISSUER:banquito-identity-access}
-      secret: ${JWT_SECRET:BanQuitoIdentityJwtSecretKeyForDevelopmentOnlyChangeMe2026}
+      issuer: ${JWT_ISSUER}
+      secret: ${JWT_SECRET}
   grpc:
     server:
-      port: ${NOTIFICATION_GRPC_PORT:9097}
+      port: ${NOTIFICATION_GRPC_PORT}
   notification:
     delivery:
-      mode: ${NOTIFICATION_DELIVERY_MODE:SIMULATED}
-      provider: ${NOTIFICATION_PROVIDER:SMTP}
-      from: ${SMTP_FROM:no-reply@banquito.com}
-      reply-to: ${SMTP_REPLY_TO:}
+      mode: ${NOTIFICATION_DELIVERY_MODE}
+      provider: ${NOTIFICATION_PROVIDER}
+      from: ${SMTP_FROM}
+      reply-to: ${SMTP_REPLY_TO}
