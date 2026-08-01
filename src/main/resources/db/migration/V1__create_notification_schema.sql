@@ -1,15 +1,10 @@
 -- ============================================================================
 -- BANCO BANQUITO V2 - NOTIFICATION SERVICE
 -- Modelo fisico MySQL 8.4 LTS
--- Base: banquito_notification_db
+-- Base: core_notificaciones_db
 -- Proposito: plantillas, solicitudes, intentos, preferencias, configuracion de
 -- canales y auditoria de notificaciones para Core, Switch e Identity.
 -- ============================================================================
-CREATE DATABASE IF NOT EXISTS banquito_notification_db
-  DEFAULT CHARACTER SET utf8mb4
-  DEFAULT COLLATE utf8mb4_unicode_ci;
-USE banquito_notification_db;
-
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS AUDITORIA_NOTIFICATION_EVENTO;
 DROP TABLE IF EXISTS NOTIFICATION_DELIVERY_ATTEMPT;

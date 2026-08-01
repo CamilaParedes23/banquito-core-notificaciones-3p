@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ADMIN_DB_URL: jdbc:mysql://127.0.0.1:3306/banquito_core_admin_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil
+      ADMIN_DB_URL: jdbc:mysql://127.0.0.1:3306/core_administrador_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil
       ADMIN_DB_USER: test
       ADMIN_DB_PASSWORD: test
 
@@ -18,7 +18,7 @@ jobs:
       mysql:
         image: mysql:8.4
         env:
-          MYSQL_DATABASE: banquito_core_admin_db
+          MYSQL_DATABASE: core_administrador_db
           MYSQL_USER: test
           MYSQL_PASSWORD: test
           MYSQL_ROOT_PASSWORD: root
