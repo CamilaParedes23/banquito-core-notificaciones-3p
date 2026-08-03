@@ -37,10 +37,21 @@ spring:
           writetimeout: ${SMTP_WRITE_TIMEOUT}
 
 management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      environment: ${METRICS_ENVIRONMENT:local}
+    distribution:
+      percentiles-histogram:
+        http.server.requests: ${HTTP_METRICS_HISTOGRAM_ENABLED:true}
+  prometheus:
+    metrics:
+      export:
+        enabled: ${PROMETHEUS_METRICS_ENABLED:true}
   endpoints:
     web:
       exposure:
-        include: ${ACTUATOR_EXPOSURE}
+        include: ${ACTUATOR_EXPOSURE:health,info,metrics,prometheus}
 
 springdoc:
   api-docs:
