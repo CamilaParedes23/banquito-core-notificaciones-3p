@@ -1,3 +1,5 @@
+USE banquito_notification_db;
+
 INSERT IGNORE INTO NOTIFICATION_CHANNEL_CONFIG (CODIGO,TIPO_CANAL,NOMBRE,CONFIG_JSON) VALUES
 ('EMAIL_SMTP_REAL','EMAIL','SMTP Transaccional', JSON_OBJECT('provider','SMTP','configuration','environment-variables'));
 
